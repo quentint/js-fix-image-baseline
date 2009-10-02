@@ -6,18 +6,16 @@ function fixImageBaselines(selector) {
 		if (sbl.indexOf('pt') != -1) bl = parseFloat(sbl) * (20 / 14.94); // IE!
 		$(selector).each(function() {
 			var $item = $(this);
-			if ($item.height() % bl != 0) {
-				var $d = $('<div />');
-				$d.css({
-					'padding-bottom': (bl * (Math.ceil($item.height() / bl)) - $item.height()) + 'px',
-					'background': 'transparent url(' + $item.attr('src') + ') no-repeat 0 0',
-					'width': $item.width(),
-					'height': $item.height()
-				});
-				$d.id=$item.id;
-				$d.className=$item.className;
-				$item.replaceWith($d);
-			}
+			var $d = $('<div />');
+			$d.css({
+				'padding-bottom': (bl * (Math.ceil($item.height() / bl)) - $item.height()) + 'px',
+				'background': 'transparent url(' + $item.attr('src') + ') no-repeat 0 0',
+				'width': $item.width(),
+				'height': $item.height()
+			});
+			$d.id=$item.id;
+			$d.className=$item.className;
+			$item.replaceWith($d);
 		});
 	});
 }
