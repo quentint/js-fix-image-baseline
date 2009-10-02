@@ -5,18 +5,16 @@ function fixImageBaselines(selector) {
 		var bl=sbl.toInt();
 		if (sbl.indexOf('pt')!=-1) bl=sbl.toFloat()*(20/14.94);	// IE!
 		$$(selector).each(function(item) {
-			if (item.height%bl!=0) {
-				var d=new Element('div');
-				d.setStyles({
-					'padding-bottom':(bl*(Math.ceil(item.height/bl))-item.height)+'px',
-					'background': 'transparent url('+item.src+') no-repeat 0 0',
-					'width':item.width,
-					'height':item.height
-				});
-				d.set('id', item.get('id'));
-				d.className=item.className;
-				d.replaces(item);
-			}
+			var d=new Element('div');
+			d.setStyles({
+				'padding-bottom':(bl*(Math.ceil(item.height/bl))-item.height)+'px',
+				'background': 'transparent url('+item.src+') no-repeat 0 0',
+				'width':item.width,
+				'height':item.height
+			});
+			d.set('id', item.get('id'));
+			d.className=item.className;
+			d.replaces(item);
 		});
 	});
 }
