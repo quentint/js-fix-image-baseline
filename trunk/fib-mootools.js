@@ -6,15 +6,8 @@ function fixImageBaselines(selector) {
 		if (sbl.indexOf('pt')!=-1) bl=sbl.toFloat()*(20/14.94);	// IE!
 		$$(selector).each(function(item) {
 			var d=new Element('div');
-			d.setStyles({
-				'padding-bottom':(bl*(Math.ceil(item.height/bl))-item.height)+'px',
-				'background': 'transparent url('+item.src+') no-repeat 0 0',
-				'width':item.width,
-				'height':item.height
-			});
-			d.set('id', item.get('id'));
-			d.className=item.className;
-			d.replaces(item);
+			d.setStyles({'height': bl*(Math.ceil(item.height/bl))+'px', 'line-height':0});
+			d.wraps(item);
 		});
 	});
 }
