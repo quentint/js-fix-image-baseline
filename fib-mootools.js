@@ -9,19 +9,15 @@ function fixImageBaselines(selector) {
 			var d=new Element('div');
 			d.setStyle('line-height', 0);
 			d.wraps(item);
-			fibSetHolderHeight(d);
 		});
 		doFixImageBaselines(selector);
 		window.addEvent('resize', function() {doFixImageBaselines(selector)});
 	});
 }
 function doFixImageBaselines(selector) {
-	$$(selector).each(function(item) {
-		fibSetHolderHeight(item.getParent());
-	});
-}
-function fibSetHolderHeight(d) {
 	setTimeout(function() {
-		d.setStyle('height', fibDocumentBaseline*(Math.ceil(d.getElement('*').height/fibDocumentBaseline))+'px');
+		$$(selector).each(function(item) {
+			fibSetHolderHeight(item.getParent());
+		});
 	}, Browser.Platform.ipod ? 100 : 5);
 }
