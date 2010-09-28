@@ -12,7 +12,6 @@ function fixImageBaselines(selector) {
 }
 function doFixImageBaselines(selector) {
 	setTimeout(function() {
-		var d;
 		$$(selector).each(function(item) {
 			item.getParent().setStyles({'line-height': 0, 'height': fibDocumentBaseline*(Math.ceil(item.height/fibDocumentBaseline))+'px'});
 		});
