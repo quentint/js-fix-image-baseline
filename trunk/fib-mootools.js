@@ -5,11 +5,7 @@ function fixImageBaselines(selector) {
 		var sbl=$(document.body).getStyle('line-height');
 		if (Browser.Engine.trident) fibDocumentBaseline=16*($(document.body).getStyle('font-size').toInt()/100)*sbl;
 		else fibDocumentBaseline=sbl.toInt();
-		$$(selector).each(function(item) {
-			var d=new Element('div');
-			d.setStyle('line-height', 0);
-			d.wraps(item);
-		});
+		$$(selector).each(function(item) { new Element('div').wraps(item); });
 		doFixImageBaselines(selector);
 		window.addEvent('resize', function() {doFixImageBaselines(selector)});
 	});
@@ -18,8 +14,7 @@ function doFixImageBaselines(selector) {
 	setTimeout(function() {
 		var d;
 		$$(selector).each(function(item) {
-			d=item.getParent();
-			d.setStyle('height', fibDocumentBaseline*(Math.ceil(item.height/fibDocumentBaseline))+'px');
+			item.getParent().setStyles({'line-height': 0, 'height': fibDocumentBaseline*(Math.ceil(item.height/fibDocumentBaseline))+'px'});
 		});
 	}, 5);
 }
