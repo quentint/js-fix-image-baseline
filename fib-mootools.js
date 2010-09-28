@@ -16,8 +16,11 @@ function fixImageBaselines(selector) {
 }
 function doFixImageBaselines(selector) {
 	setTimeout(function() {
+		var d;
 		$$(selector).each(function(item) {
-			fibSetHolderHeight(item.getParent());
+			d=item.getParent();
+			d.setStyle('height', fibDocumentBaseline*(Math.ceil(item.height/fibDocumentBaseline))+'px');
+			//fibSetHolderHeight(item.getParent());
 		});
 	}, Browser.Platform.ipod ? 100 : 5);
 }
