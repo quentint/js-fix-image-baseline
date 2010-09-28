@@ -21,5 +21,7 @@ function doFixImageBaselines(selector) {
 	});
 }
 function fibSetHolderHeight(d) {
-	d.setStyle('height', fibDocumentBaseline*(Math.ceil(d.getElement('*').height/fibDocumentBaseline))+'px');
+	setTimeout(function() {
+		d.setStyle('height', fibDocumentBaseline*(Math.ceil(d.getElement('*').height/fibDocumentBaseline))+'px');
+	}, Browser.Platform.ipod ? 100 : 5);
 }
