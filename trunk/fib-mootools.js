@@ -20,7 +20,6 @@ function doFixImageBaselines(selector) {
 		$$(selector).each(function(item) {
 			d=item.getParent();
 			d.setStyle('height', fibDocumentBaseline*(Math.ceil(item.height/fibDocumentBaseline))+'px');
-			//fibSetHolderHeight(item.getParent());
 		});
-	}, Browser.Platform.ipod ? 100 : 5);
+	}, 5);
 }
