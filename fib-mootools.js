@@ -11,7 +11,7 @@ function fixImageBaselines(selector) {
 			d.wraps(item);
 			fibSetHolderHeight(d);
 		});
-		setTimeout(function() {doFixImageBaselines(selector);}, 100);
+		doFixImageBaselines(selector);
 		window.addEvent('resize', function() {doFixImageBaselines(selector)});
 	});
 }
