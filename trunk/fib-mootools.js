@@ -5,9 +5,9 @@ function fixImageBaselines(selector) {
 		var sbl=$(document.body).getStyle('line-height');
 		if (Browser.Engine.trident) fibDocumentBaseline=16*($(document.body).getStyle('font-size').toInt()/100)*sbl;
 		else fibDocumentBaseline=sbl.toInt();
-		$$(selector).each(function(item) { new Element('div').wraps(item); });
+		$$(selector).each(function(item) { new Element('div').setStyles(item.getStyles('float')).wraps(item.setStyle('float', '')); });
 		doFixImageBaselines(selector);
-		window.addEvent('resize', function() {doFixImageBaselines(selector)});
+		window.addEvent('resize', function() {doFixImageBaselines(selector);});
 	});
 }
 function doFixImageBaselines(selector) {
